@@ -7,17 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class Booking extends Base
 {
-  //  private static $table = 'booking';
-  //private static $table_event = 'event';
-  //private static $table_show = 'show';
-  //private static $table_user = 'user';
-  //private static $table_ticket = 'ticket';
-
-    private static $table = 'cbs_bookings';
-    private static $table_event = 'cbs_events';
-    private static $table_show = 'cbs_bookings_shows';
-    private static $table_user = 'users';
-    private static $table_ticket = 'cbs_bookings_tickets';
+    private static $table = 'booking';
+    private static $table_event = 'event';
+    private static $table_show = 'show';
+    private static $table_user = 'user';
+    private static $table_ticket = 'ticket';
 
     public static function insert($user) {
         $id = DB::table(static::$table)->insertGetId([
@@ -87,37 +81,42 @@ class Booking extends Base
     }
 
 
+
+
+
+
+
+
     public static function getCount($params) {
         $query = DB::table(static::$table)
-                    ->join(static::$table_show, 'cbs_bookings.id', '=', 'cbs_bookings_shows.booking_id')
-                    ->join(static::$table_event, 'cbs_bookings.event_id', '=', 'cbs_events.id')
-                    //->leftJoin(static::$table_user . ' AS creator', 'booking.creator_id', '=', 'creator.id')
-                    ->leftJoin(static::$table_ticket . ' AS ticket', 'cbs_bookings.id', '=', 'ticket.booking_id')
-                    ->select(DB::raw('count(distinct cbs_bookings.id) as rows'));
+                    ->join(static::$table_show, 'booking.show_id', '=', 'show.id')
+                    ->join(static::$table_event, 'show.event_id', '=', 'event.id')
+                    ->leftJoin(static::$table_user . ' AS creator', 'booking.creator_id', '=', 'creator.id')
+                    ->leftJoin(static::$table_ticket . ' AS ticket', 'booking.id', '=', 'ticket.booking_id')
+                    ->select(DB::raw('count(distinct booking.id) as rows'));
         $query = static::where($query, $params);
         $total = $query->first();
         return $total->rows;
     }
 
     public static function getList(&$params) {
-        
         $total = static::getCount($params);
-       // static::setPageinfo($params, $total);
+        static::setPageinfo($params, $total);
 
         if ($total == 0) {
             return array();
         }
-        
+
         $query = DB::table(static::$table)
-                    ->join(static::$table_show, 'cbs_bookings.id', '=', 'cbs_bookings_shows.booking_id')
-                    ->join(static::$table_event, 'cbs_bookings.event_id', '=', 'cbs_events.id')
-                    //->leftJoin(static::$table_user . ' AS creator', 'booking.creator_id', '=', 'creator.id')
-                    ->leftJoin(static::$table_ticket . ' AS ticket', 'cbs_bookings.id', '=', 'ticket.booking_id')
-                    ->groupBy('cbs_bookings.id')
-                    ->select('cbs_bookings.*', 'ticket.ticket_id');
+                    ->join(static::$table_show, 'booking.show_id', '=', 'show.id')
+                    ->join(static::$table_event, 'show.event_id', '=', 'event.id')
+                    ->leftJoin(static::$table_user . ' AS creator', 'booking.creator_id', '=', 'creator.id')
+                    ->leftJoin(static::$table_ticket . ' AS ticket', 'booking.id', '=', 'ticket.booking_id')
+                    ->groupBy('booking.id')
+                    ->select('booking.*', 'show.date_time AS show_date_time', 'event.title AS event_title');
         $query = static::where($query, $params);
         if (empty($params['order_field'])) {
-            $query = $query->orderBy('cbs_bookings.id', 'desc');
+            $query = $query->orderBy('booking.id', 'desc');
         } else {
             $query = $query->orderBy($params['order_field'], $params['order_op']);
         }

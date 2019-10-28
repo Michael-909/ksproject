@@ -17,29 +17,27 @@
     <div class="row">
         <div class="col-12">
             <div class="description js-scroll-show">
-            <form   method="post" action="{{route('booking-confirm') }}" class="form-horizontal"> {{ csrf_field() }}
                 <div class="row">
                     <div class="col-7">
                         <div class="form-group ">
-                            <input type="text" class="input form-control" required="required" placeholder="Name" name='name1' value="">
+                            <input type="text" class="input form-control" required="required" placeholder="Name" value="">
                         </div>
                         <div class="form-group ">
-                            <input type="text" class="input form-control" required="required" placeholder="Email" name ='email' value="">
+                            <input type="text" class="input form-control" required="required" placeholder="Email" value="">
                         </div>
                         <div class="form-group ">
-                            <input type="text" class="input form-control" required="required" placeholder="Phone" name='phone' value="">
+                            <input type="text" class="input form-control" required="required" placeholder="Phone" value="">
                         </div>
                         <div class="form-group ">
-                            <input type="text" class="input form-control" required="required" placeholder="Country" name='country' value="">
+                            <input type="text" class="input form-control" required="required" placeholder="Country" value="">
                         </div>
                         <div class="form-group ">
-                            <select placeholder="Payment Method" name='payment'>
+                            <select placeholder="Payment Method">
                                 <option disable></option>
                                 <option value="">PayPal</option>
                             </select>
                         </div>
                     </div>
-            </form>
                     <div class="col-5">
                         <table class="table-dark" id="ticket-table">
                             <thead>
@@ -52,35 +50,28 @@
                                     <td id="col1">Date</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">{{$data['showday']}}</span>
+                                        <span id="detail-txt">2019-08-26</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Time</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['showtime']}}</span>
+                                        <span id="detail-txt">8:00 pm</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Malaysian</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['ma']}} x RM68.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Non-Malaysian</td>
-                                    <td>:</td>
-                                    <td>
-                                        <span id="detail-txt">{{$data['nm']}} x RM68.00</span>
+                                        <span id="detail-txt">3 x RM68.00</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Concession</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['con']}} x RM48.00</span>
+                                        <span id="detail-txt">1 x RM48.00</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -103,7 +94,7 @@
                                     <td id="col1">Sub-total</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">RM{{$totalval}}</span>
+                                        <span id="detail-txt">RM252.00</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -117,21 +108,14 @@
                                     <td>Total</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">RM{{$totalval}}</span>
+                                        <span id="detail-txt">RM252.00</span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <input type="hidden" name="datenm" value="{{$data['nm']}}">
-                        <input type="hidden" name="datema" value="{{$data['ma']}}">
-                        <input type="hidden" name="datecon" value="{{$data['con']}}">
-                        <input type="hidden" name="dateday" value="{{$data['showday']}}">
-                        <input type="hidden" name="datetime" value="{{$data['showtime']}}">
-                        <input type="hidden" name="datetotal" value="{{$totalval}}">
                         <div id="cta-div" class="text-center">
                             <a href="{{ route('booking-ticket') }}" class="btn" id="cta-btn"><i class="fa fa-angle-left"></i> Previous</a>
-                            <!-- <a href="{{ route('booking-confirm') }}" class="btn" id="cta-btn">Confirm <i class="fa fa-angle-right"></i></a> -->
-                            <button type="submit" class="btn">Next <i class="fa fa-angle-right"></i></button>
+                            <a href="{{ route('booking-confirm') }}" class="btn" id="cta-btn">Confirm <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>

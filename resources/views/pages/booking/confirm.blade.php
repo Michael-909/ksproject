@@ -30,35 +30,28 @@
                                     <td id="col1">Date</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">{{$data['day']}}</span>
+                                        <span id="detail-txt">2019-08-26</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Time</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['time']}} pm</span>
+                                        <span id="detail-txt">8:00 pm</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Malaysian</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['ma']}} x RM68.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Non-Malaysian</td>
-                                    <td>:</td>
-                                    <td>
-                                        <span id="detail-txt">{{$data['nm']}} x RM88.00</span>
+                                        <span id="detail-txt">3 x RM68.00</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Concession</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['con']}} x RM48.00</span>
+                                        <span id="detail-txt">1 x RM48.00</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,7 +74,7 @@
                                     <td id="col1">Sub-total</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">RM{{$data['total']}}</span>
+                                        <span id="detail-txt">RM252.00</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -95,7 +88,7 @@
                                     <td>Total</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">RM{{$data['total']}}</span>
+                                        <span id="detail-txt">RM252.00</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -111,35 +104,35 @@
                                     <td id="col1">Name</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">{{$data['name']}}</span>
+                                        <span id="detail-txt">John</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['email']}}</span>
+                                        <span id="detail-txt">john@mail.com</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Phone</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['phone']}}</span>
+                                        <span id="detail-txt">1234567890</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Country</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$data['country']}}</span>
+                                        <span id="detail-txt"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Payment method</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">paypal</span>
+                                        <span id="detail-txt">PayPal</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -190,7 +183,6 @@
         });
         $('#btnOK').on('click', function(){
             $('#confirmModal').modal('hide');
-            
             document.location.href='{{ route('booking-show') }}';
         });
     });

@@ -19,9 +19,6 @@
             <div class="description js-scroll-show">
                 <div class="row">
                     <div class="col-12 col-lg-3 col-xl-4">
-
-                    
-					    
                         <table class="table-dark" id="ticket-table">
                             <thead>
                                 <tr>
@@ -33,126 +30,121 @@
                                     <td id="col1">Show’s Language</td>
                                     <td id="col2">:</td>
                                     <td id="col3">
-                                        <span id="detail-txt">{{$title->description}}</span>
+                                        <span id="detail-txt">Mix of English, Mandarin &amp; Bahasa Malaysia (with subtitle)</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Running Time</td>
                                     <td>:</td>
                                     <td>
-                                        <span id="detail-txt">{{$title->duration}}</span>
+                                        <span id="detail-txt">60 minutes</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Show Time</td>
                                     <td>:</td>
                                     <td>
-                                        
+                                        <p id="table-p">
+                                            <span id="detail-txt">2019-08-26</span>
+                                        </p>
                                         <p>
-                                            <span id="detail-txt">{{$showtime}}pm</span>
+                                            <span id="detail-txt">3pm</span>
                                         </p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <form   method="post" action="{{route('booking-client') }}" class="form-horizontal"> {{ csrf_field() }}
-                            <table class="table-dark" id="ticket-table" style="margin-top: 1rem;">
-                                <thead>
-                                    <tr>
-                                        <th colspan="3" class="text-center">Tickets</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Bye 2 Free 1 (RM 100 VIP)</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='free'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Malaysian</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='malaysian'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Non-Malaysian</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='NM'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Concession</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='concession'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>VIP</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='vip'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Melaka Citizens</td>
-                                        <td>
-                                            <select style="padding: 2px 10px;" name='MC'>
-                                                <option value="">
-                                                <?php for ($i = 1; $i < 13; $i++) { ?>
-                                                </option><option value="{{ $i }}">{{ $i }}</option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" id="selectedSeats">&nbsp;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="">
-                                <p class="">
-                                    *Concession (Malaccans, Malaysian: Students, Senior 60yrs old and above, OKU)<br>
-                                    *Children below 100cm will be admitted free (FOC) (by not occupying any seats) under parental or guardian supervision.<br>
-                                    *Online ticket purchaser must present your CONTACT NUMBER or CONFIRMATION ID and MYKAD(Malaysian only for verification purpose)upon show ticket redemption at the RASAMELAKA Box Office<br>
-                                    *If you are purchasing STUDENT Ticket, please show us your student card in order to prove you are entitled to this type of ticket.
-                                </p>
-                            </div>
-
-                            <div id="cta-div" class="text-center">
-                                <input type="hidden" name="showday1" value="{{$showday}}">
-                                <input type="hidden" name="showtime" value="{{$showtime}}">
-                                <a href="{{ route('booking-show') }}" class="btn"><i class="fa fa-angle-left"></i> Previous</a>
-                                <!-- <a href="{{ route('booking-client') }}" class="btn">Next <i class="fa fa-angle-right"></i></a> -->
-                                <button type="submit" class="btn">Next <i class="fa fa-angle-right"></i></button>
-                            </div>
-                        </form>
+                        <table class="table-dark" id="ticket-table" style="margin-top: 1rem;">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="text-center">Tickets</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bye 2 Free 1 (RM 100 VIP)</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Malaysian</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Non-Malaysian</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Concession</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>VIP</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Melaka Citizens</td>
+                                    <td>
+                                        <select style="padding: 2px 10px;">
+                                            <option value="">
+                                            <?php for ($i = 1; $i < 13; $i++) { ?>
+                                            </option><option value="{{ $i }}">{{ $i }}</option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" id="selectedSeats">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="">
+                            <p class="">
+                                *Concession (Malaccans, Malaysian: Students, Senior 60yrs old and above, OKU)<br>
+                                *Children below 100cm will be admitted free (FOC) (by not occupying any seats) under parental or guardian supervision.<br>
+                                *Online ticket purchaser must present your CONTACT NUMBER or CONFIRMATION ID and MYKAD(Malaysian only for verification purpose)upon show ticket redemption at the RASAMELAKA Box Office<br>
+                                *If you are purchasing STUDENT Ticket, please show us your student card in order to prove you are entitled to this type of ticket.
+                            </p>
+                        </div>
+                        <div id="cta-div" class="text-center">
+                            <a href="{{ route('booking-show') }}" class="btn"><i class="fa fa-angle-left"></i> Previous</a>
+                            <a href="{{ route('booking-client') }}" class="btn">Next <i class="fa fa-angle-right"></i></a>
+                        </div>
                     </div>
-                
                     <div class="col-12 col-lg-9 col-xl-8">
                         <div class="text-center">
                             <div id="seatsmap" style="overflow: auto; position: relative; display: inline-block; width: auto; max-width: 100%;">

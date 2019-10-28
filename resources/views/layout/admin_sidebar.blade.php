@@ -44,7 +44,6 @@
             </li>
             <li class="nav-item{{ $activePage == 'booking' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin-booking') }}">
-                
                     <i class="far fa-clipboard"></i>
                     <p>{{ __('Booking') }}</p>
                 </a>

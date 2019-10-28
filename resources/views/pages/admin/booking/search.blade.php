@@ -100,7 +100,6 @@
                                                         <th>Name</th>
                                                         <th>Tickets</th>
                                                         <th>Event</th>
-                                                        <th>Payment Type</th>
                                                         <th>Showtime</th>
                                                         <th>Status</th>
                                                         <th class="text-right">Actions</th>
@@ -115,18 +114,16 @@
                                                     </tr>
                                                 @else
                                                     <?php
-                                                    
                                                         $index = ($params['page'] - 1) * $params['rows'] + 1;
                                                         foreach ($bookings as $booking) {
                                                     ?>
                                                     <tr>
                                                         <td>{{ $index }}</td>
-                                                        <td>{{ $booking->c_name }}</td>
-                                                        <td>{{$booking->ticket_id}}</td>
-                                                        <td>RASA MELAKA</td>
-                                                        <td>{{$booking->payment_method}}</td>
-                                                        <td>{{ $booking->date_time }}</td>
-                                                        <td>{{$booking->status}}</td>
+                                                        <td>{{ $booking->client_name }}</td>
+                                                        <td></td>
+                                                        <td>{{ $booking->event_title }}</td>
+                                                        <td>{{ $booking->show_date_time }}</td>
+                                                        <td></td>
                                                         <td class="td-actions text-right">
                                                             <a href="#" class="btn btn-info btn-invoice" data-id="{{ $booking->id }}"><i class="fas fa-wrench"></i></a>
                                                             <a href="#" class="btn btn-success btn-edit" data-id="{{ $booking->id }}"><i class="fas fa-pencil-alt"></i></a>

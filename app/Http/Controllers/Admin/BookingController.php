@@ -22,12 +22,11 @@ class BookingController extends Controller
         if (empty($params)) {
             $params = $request->session()->get(config('ticketing.session.admin.booking'));
         }
-        
+
         $bookings = Booking::getList($params);
         $counters = User::getAll(['account_type' => config('ticketing.account_type.counter')]);
-        
+
         $request->session()->put(config('ticketing.session.admin.booking'), $params);
-        
         return view('pages.admin.booking.search', ['params' => $params, 'bookings' => $bookings, 'counters' => $counters]);
     }
 
@@ -71,6 +70,19 @@ class BookingController extends Controller
 
         return view('pages.admin.booking.step2', ['event' => $event, 'show' => $show, 'prices' => $prices, 'venue' => $venue, 'seats' => $seats]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function edit(Request $request) {
         $id = $request->input('id');

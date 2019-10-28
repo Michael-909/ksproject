@@ -1,3 +1,3 @@
-node_modules/
 backup_20191014.zip
-vendor/
+.env
+.editorconfig

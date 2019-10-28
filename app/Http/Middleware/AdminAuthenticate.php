@@ -9,7 +9,7 @@ class AdminAuthenticate
 
     public function handle($request, Closure $next) {
         $login_user = $request->session()->get(config('ticketing.login_user'));
-        
+
         if ($login_user == NULL) {
             return redirect()->route('login');
         }

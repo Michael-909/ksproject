@@ -24,9 +24,9 @@ class LoginController extends Controller
         if ($user == NULL) {
             return view('pages.auth.login', ['uid' => $uid, 'error' => 'message.login_failed']);
         }
-        // if (!Hash::check($password, $user->password)) {
-        //     return view('pages.auth.login', ['uid' => $uid, 'error' => 'message.login_failed']);
-        // }
+        if (!Hash::check($password, $user->password)) {
+            return view('pages.auth.login', ['uid' => $uid, 'error' => 'message.login_failed']);
+        }
         if (!($user->is_active == config('ticketing.account_active.yes'))) {
             return view('pages.auth.login', ['uid' => $uid, 'error' => 'message.login_failed']);
         }

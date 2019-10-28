@@ -22,8 +22,9 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::any('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
-	Route::any('dashboard', 'DashboardController@index')->name('admin-dashboard');
-
+	Route::any('dashboard', function () {
+		return view('pages.admin.dashboard');
+	})->name('admin-dashboard');
 
 	Route::any('account', 'Admin\AccountController@search')->name('admin-account');
 	Route::any('account/edit', 'Admin\AccountController@edit')->name('admin-account-edit');
@@ -121,18 +122,14 @@ Route::prefix('counter')->middleware(['auth.counter'])->group(function () {
 });
 
 Route::prefix('booking')->group(function () {
-	//Route::any('show', function () { return view('pages.booking.show');	})->name('booking-show');
-	Route::any('show' ,'Booking\BookingController@show')->name('booking-show');
+	Route::any('show', function () {
+		return view('pages.booking.show');
+	})->name('booking-show');
 	Route::any('ticket', 'Booking\BookingController@step2')->name('booking-ticket');
-	//Route::any('client', function () {	return view('pages.booking.client'); })->name('booking-client');
-	Route::any('client', 'Booking\BookingController@client')->name('booking-client');
-	//Route::any('confirm', function () {	return view('pages.booking.confirm');})->name('booking-confirm');
-	Route::any('confirm','Booking\BookingController@confirm')->name('booking-confirm');
+	Route::any('client', function () {
+		return view('pages.booking.client');
+	})->name('booking-client');
+	Route::any('confirm', function () {
+		return view('pages.booking.confirm');
+	})->name('booking-confirm');
 });
-//payment form
-// Route::get('/', 'PaymentController@index');
-// route for processing payment
-Route::post('paypal', 'PaymentController@payWithpaypal');
-
-// route for check status of the payment
-Route::get('status', 'PaymentController@getPaymentStatus');

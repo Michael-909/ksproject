@@ -128,8 +128,6 @@ class User extends Base
         return $users;
     }
     public static function getAll($params) {
-       
-
         $query = DB::table(static::$table);
         $query = static::where($query, $params);
         if (empty($params['order_field'])) {
@@ -137,9 +135,8 @@ class User extends Base
         } else {
             $query = $query->orderBy($params['order_field'], $params['order_op']);
         }
-        
+
         $users = $query->get();
-        
         return $users;
     }
 

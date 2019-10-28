@@ -65,23 +65,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class='chart col-sm-8'>
-                {!!$chart->html()!!}
-            </div>
-            <div class='col-sm-4'>
-                {!! $calendar->calendar() !!}
-            </div>
-        </div>
     </div>
 </div>
-{!!Charts::scripts()!!}
-{!! $chart->script()!!}
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-{!! $calendar->script() !!}
-
 @endsection
 
 @push('js')

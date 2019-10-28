@@ -10,9 +10,6 @@
 
     <!-- Fonts and icons -->
     <link rel="stylesheet" href="{{ asset('fontawesome/css/fontawesome-all.min.css') }}">
-
-    <!--calendar -->
-    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
       
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -52,8 +49,6 @@
 
     <script src="{{ asset('js/pages/material.min.js') }}"></script>
     <script src="{{ asset('js/pages/application.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 
     @stack('js')
 
