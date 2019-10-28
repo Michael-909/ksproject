@@ -102,15 +102,28 @@ class Event extends Base
     }
 
     public static function getAvailableList($showtime) {
+        // $query = DB::table(static::$table)
+        //             ->join(static::$table_venue, 'event.venue_id', '=', 'venue.id')
+        //             ->join(static::$table_show, 'event.id', '=', 'show.event_id')
+        //             ->groupBy('event.id')
+        //             ->select(['event.*', 'venue.name AS venue_name'])
+        //             ->where('show.date_time', '>=', $showtime)
+        //             ->orderBy('event.id', 'asc');
+
         $query = DB::table(static::$table)
                     ->join(static::$table_venue, 'event.venue_id', '=', 'venue.id')
-                    ->join(static::$table_show, 'event.id', '=', 'show.event_id')
+                    // ->join(static::$table_show, 'event.id', '=', 'show.event_id')
                     ->groupBy('event.id')
-                    ->select(['event.*', 'venue.name AS venue_name'])
-                    ->where('show.date_time', '>', $showtime)
+                    ->select(['event.*'])
+                    ->where('event.from_date', '>=', $showtime)
                     ->orderBy('event.id', 'asc');
-        
+
         $events = $query->get();
+
+        // echo "<div style='margin-left:500px;'>";
+        // var_dump($events);
+        // echo "</div>";
+
         return $events;
     }
 

@@ -1,6 +1,7 @@
 @extends('layout.admin', ['activePage' => 'booking', 'titlePage' => __('Booking')])
 
 @section('content')
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -46,7 +47,7 @@
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 <select name="show_id" class="custom-select" required>
-                                                    <option value=""></option>
+                                                    <!-- <option value=""></option> -->
                                                 </select>
                                             </div>
                                         </div>
@@ -103,7 +104,8 @@
                             $('#eventDuration').text('DURATION: ' + data.event.duration);
                             $('#eventHall').text('HALL: ' + data.event.venue_name);
                             $('#eventPeriod').text('PERIOD: ' + data.event.from_date + ' ~ ' + data.event.to_date);
-                            $('form#mainForm select[name="show_id"]').html('<option value=""></option>');
+                            var temp_show_id_text = 'PERIOD: ' + data.event.from_date + ' ~ ' + data.event.to_date;
+                            $('form#mainForm select[name="show_id"]').html('<option value="'+event_id+'">'+temp_show_id_text+'</option>');
                             for (i = 0; i < data.shows.length; i++) {
                                 var show_date = data.shows[i].date_time.substr(0, 10);
                                 var show_time = data.shows[i].date_time.substr(11);
