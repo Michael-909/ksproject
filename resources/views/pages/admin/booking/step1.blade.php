@@ -128,7 +128,7 @@
                 });
             }
         });
-        $('.btn-next').on('click', function(){
+        $('form#mainForm button[type="submit"]').on('click', function(){
             if ($('form#mainForm').valid) {
             }
         });

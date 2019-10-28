@@ -52,37 +52,30 @@ class BookingController extends Controller
     }
 
     public function step2(Request $request) {
-        $show_id = $request->input('show_id');
-        if (empty($show_id)) {
-            return redirect()->route('admin-booking-step1');
-        }
+        // $show_id = $request->input('show_id');
+        // if (empty($show_id)) {
+        //     return redirect()->route('admin-booking-step1');
+        // }
+        $show_id = 36;
         $show = Show::getById($show_id);
         if (empty($show)) {
             return redirect()->route('admin-booking-step1');
         }
 
-        $event = Event::getById($show->event_id);
-        $prices = Price::getListByEvent($show->event_id);
+        $event_id = $request->input('event_id');
+        if(empty($event_id)) {
+            return redirect()->route('admin-booking-step1');
+        }
+
+        $event = Event::getById($event_id);
+        $prices = Price::getListByEvent($event_id);
         //$promotions = 
 
         $venue = Venue::getById($event->venue_id);
-        $seats = Venue::getSeatsByVenue($show->venue_id);
+        $seats = Venue::getSeatsByVenue($event->venue_id);
 
         return view('pages.admin.booking.step2', ['event' => $event, 'show' => $show, 'prices' => $prices, 'venue' => $venue, 'seats' => $seats]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function edit(Request $request) {
         $id = $request->input('id');
