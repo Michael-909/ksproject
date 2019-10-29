@@ -6,6 +6,8 @@
         <div class="row">
             <div class="col-md-12">
                 <form id="mainForm" method="post" action="save" autocomplete="off" class="form-horizontal">
+                    <input type="hidden" name="event_id" value="{{ $event_id }}">
+                    <input type="hidden" name="show_id" value="{{ $show_id }}">
                     @csrf
                     <div class="card">
                         <div class="card-header card-header-info card-header-icon">
@@ -110,7 +112,8 @@
         $('.payment-card').hide();
         $('.btn-save').click(function (){
             if ($('form#mainForm').valid()) {
-                document.location.href="{{ route('admin-booking') }}";
+                $('form#mainForm').submit();
+                // document.location.href="{{ route('admin-booking') }}";
             }
         });
         $('#selectPaymentType').on('change', function (){

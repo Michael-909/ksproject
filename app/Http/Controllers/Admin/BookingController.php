@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -216,4 +217,35 @@ class BookingController extends Controller
         exit;
     }
 
+    public function step3(Request $request) {
+        $event_id = $request->input('event_id');
+        $show_id = $request->input('show_id');
+        return view('pages.admin.booking.step3', ['show_id' => $show_id, 'event_id' => $event_id]);
+    }
+
+    public function saveBooking(Request $request) {
+        $client_name = $request->input('client_name');
+        $client_email = $request->input('client_email');
+        $client_phone = $request->input('client_phone');
+        $creator_id = $request->input('event_id');
+
+        $userdata = Session::get('MELAKA_TICKETING_USER');
+
+        if(empty($userdata)) {
+            return redirect()->route('home');
+        }
+
+        $paradata = array(
+            'uid' => $userdata->uid,
+            'account_type' => $userdata->account_type,
+            'creator_id' => $creator_id,
+            'name' => 'Administrator',
+            'email' => 'admin@mail.com',
+            'phone' => '12345678',
+            'password' => '123',
+            'is_active' => $userdata->is_active
+        );
+
+        return redirect()->route('admin-booking');
+    }
 }

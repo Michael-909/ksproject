@@ -8,6 +8,7 @@
                 <form id="mainForm" method="post" action="step3" autocomplete="off" class="form-horizontal">
                     @csrf
                     <input type="hidden" name="show_id" value="{{ $show->id }}">
+                    <input type="hidden" name="event_id" value="{{ $event->id }}">
                     <input type="hidden" name="seats">
                     <div class="card">
                         <div class="card-header card-header-info card-header-icon">

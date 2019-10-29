@@ -15,15 +15,14 @@ class Booking extends Base
 
     public static function insert($user) {
         $id = DB::table(static::$table)->insertGetId([
-                'uid' => $user['uid'],
-                'account_type' => $user['account_type'],
-                'creator_id' => $user['creator_id'],
-                'name' => $user['name'],
-                'email' => $user['email'],
-                'phone' => $user['phone'],
-                'password' => $user['password'],
+                // 'account_type' => $user['account_type'],
+                'creator_id' => $user['uid'],
+                'client_name' => $user['name'],
+                'client_email' => $user['email'],
+                'client_phone' => $user['phone'],
+                // 'password' => $user['password'],
                 'created_time' => date('Y-m-d H:i:s'),
-                'is_active' => $user['is_active'],
+                // 'is_active' => $user['is_active'],
         ]);
         return $id;
     }
@@ -80,13 +79,6 @@ class Booking extends Base
         return (int) substr($user->uid, strlen($user->uid) - 4);
     }
 
-
-
-
-
-
-
-
     public static function getCount($params) {
         $query = DB::table(static::$table)
                     ->join(static::$table_show, 'booking.show_id', '=', 'show.id')
@@ -122,6 +114,18 @@ class Booking extends Base
         }
         $query = $query->take($params['rows'])->skip($params['rows'] * ($params['page'] - 1));
 
+        $booking = $query->get();
+        return $booking;
+    }
+
+    public static function getListAD() {
+        $query = DB::table(static::$table)
+                    ->join(static::$table_show, 'booking.show_id', '=', 'show.id')
+                    ->join(static::$table_event, 'show.event_id', '=', 'event.id')
+                    ->leftJoin(static::$table_user . ' AS creator', 'booking.creator_id', '=', 'creator.id')
+                    ->leftJoin(static::$table_ticket . ' AS ticket', 'booking.id', '=', 'ticket.booking_id')
+                    ->groupBy('booking.id')
+                    ->select('booking.*', 'show.date_time AS show_date_time', 'event.title AS event_title');
         $booking = $query->get();
         return $booking;
     }

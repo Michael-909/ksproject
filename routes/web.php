@@ -76,9 +76,12 @@ Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
 	Route::any('booking/step2', 'Admin\BookingController@step2')->name('admin-booking-step2');
 	Route::get('booking/hall/map/{id}', 'Admin\VenueController@getSeatsMap');
 
-	Route::any('booking/step3', function () {
-		return view('pages.admin.booking.step3');
-	})->name('admin-booking-step3');
+	// Route::any('booking/step3', function () {
+	// 	return view('pages.admin.booking.step3');
+	// })
+
+	Route::any('booking/step3', 'Admin\BookingController@step3')->name('admin-booking-step3');
+	Route::any('booking/save', 'Admin\BookingController@saveBooking')->name('admin-booking-save');
 
 	Route::any('options', function () {
 		return view('pages.admin.options.options');
